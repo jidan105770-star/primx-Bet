@@ -435,3 +435,475 @@
             <div class="game-title">সুপার এস ডি...</div>
         </a>
     </div>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primx-Bet</title>
+    <!-- Font Awesome & Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #07122b;
+            --primary-blue: #0b2265;
+            --accent-yellow: #ffc107;
+            --card-bg: #0d234d;
+            --text-light: #fff;
+            --text-muted: #8fa0c4;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-bottom: 70px;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        .top-header {
+            background-color: var(--primary-blue);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #1a3d7c;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-text {
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .ok-icon {
+            color: #ffc107;
+            font-size: 22px;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .login-btn, .register-btn {
+            border: none;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            background-color: #f3c242;
+            color: #000;
+        }
+
+        .register-btn {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+        /* Auto Sliding Banner */
+        .banner-slider {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #1a3a75;
+        }
+
+        /* Animated Announcement Bar */
+        .announcement-bar {
+            background: rgba(15, 43, 92, 0.7);
+            color: var(--accent-yellow);
+            padding: 8px 12px;
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        .announcement-text {
+            display: inline-block;
+            animation: scroll-left 15s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Category Nav Icons */
+        .cat-nav {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 15px 10px;
+            background: #091a3e;
+            margin-top: 10px;
+            scrollbar-width: none;
+        }
+
+        .cat-item {
+            flex: 0 0 auto;
+            width: 70px;
+            background: #122853;
+            border-radius: 12px;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-light);
+            text-decoration: none;
+            border: 1px solid #1d3870;
+            cursor: pointer;
+        }
+
+        .cat-item.active {
+            background: #ffc107;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .cat-item i {
+            font-size: 20px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: var(--accent-yellow);
+            margin: 20px 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Game Sections (Tabs) */
+        .game-section {
+            display: none;
+        }
+
+        .game-section.active {
+            display: block;
+        }
+
+        /* Game Grid */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 0 10px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #1a3a75;
+            text-decoration: none;
+            color: var(--text-light);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .game-title {
+            font-size: 13px;
+            padding: 8px 4px;
+            background: rgba(0,0,0,0.6);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;
+        }
+
+        /* Floating Social Icons */
+        .floating-socials {
+            position: fixed;
+            right: 15px;
+            bottom: 90px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            text-decoration: none;
+        }
+
+        .btn-cs { background: #0088cc; }
+        .btn-tg { background: #24a1de; }
+        .btn-fb { background: #1877f2; }
+        .btn-wa { background: #25d366; }
+
+        /* Bottom Fixed Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #091838;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            border-top: 1px solid #1a366b;
+            z-index: 1000;
+        }
+
+        .nav-link-custom {
+            color: var(--text-muted);
+            text-align: center;
+            font-size: 12px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-link-custom.active {
+            color: var(--accent-yellow);
+        }
+
+        .nav-link-custom i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .agent-btn {
+            background: var(--accent-yellow);
+            color: #000;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -30px;
+            border: 4px solid var(--bg-dark);
+            box-shadow: 0 0 15px rgba(255,193,7,0.6);
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="logo-area">
+            <span class="logo-text">Primx-Bet</span>
+            <i class="fa-solid fa-thumbs-up ok-icon"></i>
+        </div>
+        <div class="auth-buttons">
+            <button class="login-btn">লগইন</button>
+            <button class="register-btn">নিবন্ধন</button>
+        </div>
+    </div>
+
+    <!-- Banner Slider -->
+    <div class="banner-slider">
+        <div id="topBannerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./1.png" class="d-block w-100" alt="Banner 1" onerror="this.src='./1.jpg'">
+                </div>
+                <div class="carousel-item">
+                    <img src="./2.png" class="d-block w-100" alt="Banner 2" onerror="this.src='./2.jpg'">
+                </div>
+                <div class="carousel-item">
+                    <img src="./3.png" class="d-block w-100" alt="Banner 3" onerror="this.src='./3.jpg'">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-text">
+            <i class="fa-solid fa-volume-high me-2"></i> জরুরি ঘোষণা - নতুন অ্যাক্সেস ডোমেইন পাসওয়ার্ড পরিবর্তন করুন
+        </div>
+    </div>
+
+    <!-- Top Category Navigation -->
+    <div class="cat-nav">
+        <div class="cat-item active" onclick="switchTab('home')"><i class="fa-solid fa-house"></i>হোম</div>
+        <div class="cat-item" onclick="switchTab('hot')"><i class="fa-solid fa-fire text-danger"></i>গরম</div>
+        <div class="cat-item" onclick="switchTab('slot')"><i class="fa-solid fa-gamepad text-warning"></i>স্লট</div>
+        <div class="cat-item" onclick="switchTab('fishing')"><i class="fa-solid fa-fish text-info"></i>ফির্শিং</div>
+        <div class="cat-item" onclick="switchTab('live')"><i class="fa-solid fa-compass text-primary"></i>লাইভ</div>
+    </div>
+
+    <!-- 1. HOME TAB (জনপ্রিয় গেম) -->
+    <div id="tab-home" class="game-section active">
+        <div class="section-title"><i class="fa-solid fa-star text-warning"></i> জনপ্রিয় গেম</div>
+        <div class="game-grid">
+            <a href="#" class="game-card"><img src="./4.jpeg" onerror="this.src='./4.jpg'"><div class="game-title">সুপার এস</div></a>
+            <a href="#" class="game-card"><img src="./5.jpeg" onerror="this.src='./5.jpg'"><div class="game-title">এভিয়েটর</div></a>
+            <a href="#" class="game-card"><img src="./6.jpeg" onerror="this.src='./6.jpg'"><div class="game-title">Fiery Seven</div></a>
+            <a href="#" class="game-card"><img src="./7.jpeg" onerror="this.src='./7.jpg'"><div class="game-title">বক্সিং কিং</div></a>
+            <a href="#" class="game-card"><img src="./8.jpeg" onerror="this.src='./8.jpg'"><div class="game-title">ফরচুন জেম্স ২</div></a>
+            <a href="#" class="game-card"><img src="./9.jpeg" onerror="this.src='./9.jpg'"><div class="game-title">সুপার এস ডি...</div></a>
+        </div>
+    </div>
+
+    <!-- 2. HOT TAB (গরম খেলা) -->
+    <div id="tab-hot" class="game-section">
+        <div class="section-title"><i class="fa-solid fa-fire text-danger"></i> গরম খেলা</div>
+        <div class="game-grid">
+            <a href="#" class="game-card"><img src="./4.jpeg" onerror="this.src='./4.jpg'"><div class="game-title">ফরচুন কয়েনস</div></a>
+            <a href="#" class="game-card"><img src="./5.jpeg" onerror="this.src='./5.jpg'"><div class="game-title">ফরচুন জেম্স ৩</div></a>
+            <a href="#" class="game-card"><img src="./6.jpeg" onerror="this.src='./6.jpg'"><div class="game-title">ম্যাজিক এস</div></a>
+            <a href="#" class="game-card"><img src="./7.jpeg" onerror="this.src='./7.jpg'"><div class="game-title">সুপার এস II</div></a>
+            <a href="#" class="game-card"><img src="./8.jpeg" onerror="this.src='./8.jpg'"><div class="game-title">সুপার এলিমেন্টস</div></a>
+            <a href="#" class="game-card"><img src="./9.jpeg" onerror="this.src='./9.jpg'"><div class="game-title">ক্রেজি ৭৭৭</div></a>
+        </div>
+    </div>
+
+    <!-- 3. SLOT TAB (স্লট গেম) -->
+    <div id="tab-slot" class="game-section">
+        <div class="section-title"><i class="fa-solid fa-gamepad text-warning"></i> স্লট গেমসমূহ</div>
+        <div class="game-grid">
+            <a href="#" class="game-card"><img src="./4.jpeg" onerror="this.src='./4.jpg'"><div class="game-title">ফ্রুটি বোনান্জা</div></a>
+            <a href="#" class="game-card"><img src="./5.jpeg" onerror="this.src='./5.jpg'"><div class="game-title">সুপার এলিমেন্টস ২</div></a>
+            <a href="#" class="game-card"><img src="./6.jpeg" onerror="this.src='./6.jpg'"><div class="game-title">ফরচুন জেম্স</div></a>
+            <a href="#" class="game-card"><img src="./7.jpeg" onerror="this.src='./7.jpg'"><div class="game-title">জলদস্যু কিংবদন্তি</div></a>
+            <a href="#" class="game-card"><img src="./8.jpeg" onerror="this.src='./8.jpg'"><div class="game-title">লাকি জাগুয়ার</div></a>
+            <a href="#" class="game-card"><img src="./9.jpeg" onerror="this.src='./9.jpg'"><div class="game-title">উচ্চ ফ্লাইয়ার</div></a>
+        </div>
+    </div>
+
+    <!-- 4. FISHING TAB (ফির্শিং গেম) -->
+    <div id="tab-fishing" class="game-section">
+        <div class="section-title"><i class="fa-solid fa-fish text-info"></i> ফির্শিং গেমসমূহ</div>
+        <div class="game-grid">
+            <a href="#" class="game-card"><img src="./4.jpeg" onerror="this.src='./4.jpg'"><div class="game-title">Dragon Boom</div></a>
+            <a href="#" class="game-card"><img src="./5.jpeg" onerror="this.src='./5.jpg'"><div class="game-title">King Octopus</div></a>
+            <a href="#" class="game-card"><img src="./6.jpeg" onerror="this.src='./6.jpg'"><div class="game-title">Cai Shen Dao</div></a>
+            <a href="#" class="game-card"><img src="./7.jpeg" onerror="this.src='./7.jpg'"><div class="game-title">Mermaid Legend</div></a>
+            <a href="#" class="game-card"><img src="./8.jpeg" onerror="this.src='./8.jpg'"><div class="game-title">Mythical Adventure</div></a>
+            <a href="#" class="game-card"><img src="./9.jpeg" onerror="this.src='./9.jpg'"><div class="game-title">Happy Food Hunter</div></a>
+        </div>
+    </div>
+
+    <!-- 5. LIVE TAB (লাইভ ক্যাসিনো) -->
+    <div id="tab-live" class="game-section">
+        <div class="section-title"><i class="fa-solid fa-compass text-primary"></i> লাইভ ক্যাসিনো</div>
+        <div class="game-grid">
+            <a href="#" class="game-card"><img src="./4.jpeg" onerror="this.src='./4.jpg'"><div class="game-title">ক্রেজি টাইম</div></a>
+            <a href="#" class="game-card"><img src="./5.jpeg" onerror="this.src='./5.jpg'"><div class="game-title">মজাদার সময়</div></a>
+            <a href="#" class="game-card"><img src="./6.jpeg" onerror="this.src='./6.jpg'"><div class="game-title">বরফে মাছ ধরা</div></a>
+            <a href="#" class="game-card"><img src="./7.jpeg" onerror="this.src='./7.jpg'"><div class="game-title">মেগা হুইল</div></a>
+            <a href="#" class="game-card"><img src="./8.jpeg" onerror="this.src='./8.jpg'"><div class="game-title">Bac Bo</div></a>
+            <a href="#" class="game-card"><img src="./9.jpeg" onerror="this.src='./9.jpg'"><div class="game-title">Auto-Roulette</div></a>
+        </div>
+    </div>
+
+    <!-- Floating Social Contact Links -->
+    <div class="floating-socials">
+        <a href="#" class="social-btn btn-cs"><i class="fa-solid fa-headset"></i></a>
+        <a href="#" class="social-btn btn-tg"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#" class="social-btn btn-fb"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-btn btn-wa"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-link-custom active">
+            <i class="fa-solid fa-house"></i>
+            হোম
+        </a>
+        <a href="#" class="nav-link-custom">
+            <i class="fa-solid fa-gift"></i>
+            প্রমোশন
+        </a>
+        <a href="#" class="nav-link-custom">
+            <div class="agent-btn"><i class="fa-solid fa-coins"></i></div>
+            এজেন্ট
+        </a>
+        <a href="#" class="nav-link-custom">
+            <i class="fa-solid fa-wallet"></i>
+            ডিপোজিট
+        </a>
+        <a href="#" class="nav-link-custom">
+            <i class="fa-solid fa-user"></i>
+            অ্যাকাউন্ট
+        </a>
+    </div>
+
+    <!-- Bootstrap JS and Tab Switching Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Banner Carousel 3s Interval
+        const myCarousel = document.querySelector('#topBannerCarousel');
+        const carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 3000,
+            ride: 'carousel',
+            wrap: true
+        });
+
+        // Tab Switching Functionality
+        function switchTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.game-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Remove active class from all nav items
+            document.querySelectorAll('.cat-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            // Show target section
+            document.getElementById('tab-' + tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
+<div class="logo-area">
+    <span class="logo-text" style="font-family: 'Orbitron', sans-serif; font-weight: 900; background: linear-gradient(45deg, #ffc107, #ff8800, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 19px;">PRIMX<span style="color: #ffc107; -webkit-text-fill-color: #ffc107;">.BET</span></span>
+    <i class="fa-solid fa-crown" style="color: #ffc107; font-size: 16px; filter: drop-shadow(0 0 5px rgba(255, 193, 7, 0.8));"></i>
+</div>
