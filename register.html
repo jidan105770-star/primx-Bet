@@ -309,3 +309,88 @@
 
 </body>
 </html>
+<style>
+    /* 1. Background Gradient Animation */
+body {
+    background: linear-gradient(-45deg, #051026, #0b1a40, #132b63, #08122c);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 2. Floating Effect (Main Box) */
+.container {
+    animation: floatAnimation 4s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+/* 3. Logo Glow & Pulse Animation */
+.logo-icon {
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 22px rgba(255, 204, 0, 0.8);
+    }
+}
+
+/* 4. Input Focus Animation */
+.input-group {
+    transition: all 0.3s ease;
+}
+
+.input-group:focus-within {
+    border: 1px solid #ffcc00;
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.4);
+    transform: translateY(-2px);
+    background-color: #162b61;
+}
+
+/* 5. Button Animation (Hover & Click) */
+.submit-btn {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 179, 0, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 204, 0, 0.6);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* Back Button & Google Icon Animation */
+.back-btn {
+    transition: transform 0.2s ease;
+}
+
+.back-btn:hover {
+    transform: translateX(-3px);
+    color: #ffcc00;
+}
+
+.google-icon {
+    transition: all 0.3s ease;
+}
+
+.google-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
