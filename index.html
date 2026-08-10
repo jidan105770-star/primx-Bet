@@ -539,3 +539,164 @@ Close
             </div>
 </body>
 </html>
+<style>/* ===== Background Animated Gradient ===== */
+
+body {
+    background: linear-gradient(
+        -45deg,
+        #07122b,
+        #0b2265,
+        #102f6b,
+        #07122b
+    );
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+}
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* ===== Floating Effect ===== */
+
+.game-card,
+.cat-item,
+.social-btn {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+/* ===== Logo Animation ===== */
+
+.site-logo-icon {
+    animation: logoPulse 2s infinite;
+}
+
+@keyframes logoPulse {
+
+    0% {
+        transform: scale(1);
+        box-shadow:0 0 10px rgba(255,193,7,.4);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow:0 0 25px rgba(255,193,7,.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.logo-text {
+    animation: textGlow 2s infinite alternate;
+}
+
+
+@keyframes textGlow {
+
+    from {
+        filter: drop-shadow(0 0 5px #ffc107);
+    }
+
+    to {
+        filter: drop-shadow(0 0 15px #ff8800);
+    }
+}
+
+
+
+/* ===== Button Animation ===== */
+
+.login-btn,
+.register-btn,
+button {
+    transition: .3s ease;
+}
+
+
+.login-btn:hover,
+.register-btn:hover,
+button:hover {
+
+    transform: translateY(-3px) scale(1.05);
+
+    box-shadow:
+    0 8px 20px rgba(255,193,7,.4);
+}
+
+
+/* ===== Input Focus Animation ===== */
+
+input {
+
+    background:#091838;
+    color:white;
+    border:1px solid #1d3870;
+    border-radius:8px;
+
+    transition:.3s ease;
+
+}
+
+
+input:focus {
+
+    outline:none;
+
+    border-color:#ffc107;
+
+    box-shadow:
+    0 0 15px rgba(255,193,7,.6);
+
+    transform:scale(1.02);
+
+}
+
+
+/* ===== Popup Smooth Animation ===== */
+
+#authBox > div {
+
+    animation: popup .4s ease;
+
+}
+
+
+@keyframes popup {
+
+    from {
+
+        opacity:0;
+        transform:scale(.8);
+
+    }
+
+    to {
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+}</style>
