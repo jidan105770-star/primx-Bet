@@ -1,0 +1,58 @@
+<!-- Deposit Modal Starts Here -->
+<div class="deposit-modal-overlay" id="depositModal">
+    <div class="deposit-modal-card">
+        <div class="deposit-modal-header">
+            <h5><i class="fa-solid fa-wallet text-warning me-2"></i>ডিপোজিট করুন</h5>
+            <button class="close-modal-btn" onclick="closeDepositModal()">&times;</button>
+        </div>
+        
+        <div class="deposit-modal-body">
+            <!-- Payment Method Selection -->
+            <label class="input-label">পেমেন্ট মেথড নির্বাচন করুন:</label>
+            <div class="payment-methods">
+                <div class="payment-option active" onclick="selectMethod('bkash', this)">
+                    <img src="https://img.icons8.com/color/48/bkash.png" alt="bKash" class="method-icon">
+                    <span>বিকাশ</span>
+                </div>
+                <div class="payment-option" onclick="selectMethod('nagad', this)">
+                    <img src="https://img.icons8.com/color/48/nagad.png" alt="Nagad" class="method-icon">
+                    <span>নগদ</span>
+                </div>
+                <div class="payment-option" onclick="selectMethod('rocket', this)">
+                    <img src="https://img.icons8.com/color/48/rocket.png" alt="Rocket" class="method-icon">
+                    <span>রকেট</span>
+                </div>
+            </div>
+
+            <!-- Agent Number Notice Box -->
+            <div class="agent-number-box">
+                <span class="d-block text-secondary small">আমাদের ক্যাশ-আউট/সেন্ড মানি নম্বর:</span>
+                <div class="d-flex justify-content-between align-items-center mt-1">
+                    <strong id="agentNumber" class="text-warning fs-5">017XXXXXXXX</strong>
+                    <button class="btn-copy" onclick="copyAgentNumber()"><i class="fa-regular fa-copy"></i> কপি</button>
+                </div>
+            </div>
+
+            <!-- Input Form -->
+            <form id="depositForm" onsubmit="handleDepositSubmit(event)">
+                <div class="form-group">
+                    <label class="input-label">পরিমাণ (BDT):</label>
+                    <input type="number" min="200" max="25000" class="form-control-custom" placeholder="সর্বনিম্ন ২০০ ৳" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="input-label">আপনার ওয়ালেট/মোবাইল নম্বর:</label>
+                    <input type="tel" class="form-control-custom" placeholder="017XXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="input-label">ট্রানজেকশন আইডি (TrxID):</label>
+                    <input type="text" class="form-control-custom" placeholder="যেমন: 8N7A6D5E" required>
+                </div>
+
+                <button type="submit" class="btn-submit-deposit">ডিপোজিট রিকোয়েস্ট পাঠান</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Deposit Modal Ended -->
