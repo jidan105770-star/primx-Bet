@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ই-ওয়ালেট বাঁধুন - Primx-Bet</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fc;
+            color: #333;
+            padding-bottom: 30px;
+        }
+
+        /* --- Header Navigation --- */
+        .top-navbar {
+            background-color: #122b5e;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .top-navbar h1 {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+
+        /* --- Container --- */
+        .container {
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        /* --- Wallet Group Selection Grid --- */
+        .wallet-groups {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .group-card {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+        }
+
+        .group-card.active {
+            border-color: #d32f2f;
+            background-color: #fffdfd;
+        }
+
+        .group-card span {
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Custom Logo Class for Images */
+        .wallet-logo {
+            width: 22px;
+            height: 22px;
+            margin-bottom: 4px;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        /* --- Form Box --- */
+        .form-box {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .box-label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .type-badge {
+            display: inline-block;
+            border: 1px solid #d32f2f;
+            color: #333;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            background: #fff5f5;
+            margin-bottom: 15px;
+        }
+
+        /* Input Fields */
+        .input-group {
+            background: #f2f2f2;
+            border-radius: 6px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .input-group i {
+            color: #888;
+            font-size: 16px;
+        }
+
+        .input-group input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            outline: none;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .input-group input::placeholder {
+            color: #888;
+        }
+
+        .warning-text {
+            color: #d32f2f;
+            font-size: 11px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .password-section-title {
+            color: #d32f2f;
+            font-size: 13px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            text-align: center;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #dcdcdc;
+            cursor: not-allowed;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn.active {
+            background-color: #122b5e;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="top-navbar">
+        <a href="withdraw.html"><i class="fa-solid fa-chevron-left"></i></a>
+        <h1>ই-ওয়ালেট বাঁধুন</h1>
+        <div style="width: 18px;"></div>
+    </header>
+
+    <div class="container">
+        
+        <div class="section-title">ই-ওয়ালেট গ্রুপ নির্বাচন করুন</div>
+
+        <!-- Wallet Group Options -->
+        <div class="wallet-groups">
+            <div class="group-card active" onclick="selectWallet('nagad', 'নগদ', 'নগদ অ্যাকাউন্ট নম্বর', 'এই নম্বর')">
+                <img src="nagad.jpeg" alt="Nagad" class="wallet-logo">
+                <span>নগদ</span>
+            </div>
+            <div class="group-card" onclick="selectWallet('bkash', 'বিকাশ', 'বিকাশ অ্যাকাউন্ট নম্বর', 'এই নম্বর')">
+                <img src="bkash.jpeg" alt="bKash" class="wallet-logo">
+                <span>বিকাশ</span>
+            </div>
+            <div class="group-card" onclick="selectWallet('usdt', 'USDT (TRC20)', 'USDT ওয়ালেট অ্যাড্রেস (TRC20)', 'অ্যাড্রেস')">
+                <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT" class="wallet-logo">
+                <span>USDT</span>
+            </div>
+            <div class="group-card" onclick="selectWallet('trx', 'TRON (TRX)', 'TRX ওয়ালেট অ্যাড্রেস', 'অ্যাড্রেস')">
+                <img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRX" class="wallet-logo">
+                <span>TRX</span>
+            </div>
+            <div class="group-card" onclick="selectWallet('btc', 'Bitcoin', 'Bitcoin ওয়ালেট অ্যাড্রেস', 'অ্যাড্রেস')">
+                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="wallet-logo">
+                <span>Bitcoin</span>
+            </div>
+            <div class="group-card" onclick="selectWallet('binance', 'Binance Pay', 'Binance Pay ID / Email', 'আইডি বা ইমেইল')">
+                <img src="binance.jpeg" alt="Binance" class="wallet-logo">
+                <span>Binance Pay</span>
+            </div>
+        </div>
+
+        <!-- Form Details -->
+        <div class="form-box">
+            <div class="box-label">ই-ওয়ালেট প্রকার</div>
+            <div class="type-badge" id="wallet-badge">নগদ</div>
+
+            <!-- Full Name Input -->
+            <div class="input-group">
+                <i class="fa-regular fa-id-card"></i>
+                <input type="text" id="fullname" placeholder="প্রাপকের পূর্ণ নাম লিখুন" oninput="checkForm()">
+            </div>
+
+            <div class="warning-text">পূর্ববর্তী তথ্য সাথে নাম মিল হওয়া নিশ্চিত করুন পূর্ণ হারানোর জন্য।</div>
+
+            <!-- Account Number / Address Input -->
+            <div class="input-group">
+                <i class="fa-solid fa-credit-card" id="input-icon"></i>
+                <input type="text" id="account-info" placeholder="অনুগ্রহ করে নগদ অ্যাকাউন্ট নম্বর পূরণ করুন" oninput="checkForm()">
+            </div>
+        </div>
+
+        <!-- Password Section -->
+        <div class="password-section-title">দয়া করে আপনার লেন-দেন পাসওয়ার্ড সেট করুন।</div>
+
+        <div class="form-box" style="margin-bottom: 0;">
+            <!-- Transaction Password -->
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="txn-pwd" placeholder="লেনদেন পাসওয়ার্ড সেট করুন" oninput="checkForm()">
+                <i class="fa-solid fa-eye-slash" id="eye-1" style="cursor: pointer; color: #888;" onclick="togglePwd('txn-pwd', 'eye-1')"></i>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="input-group" style="margin-bottom: 0;">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="confirm-pwd" placeholder="পাসওয়ার্ড নিশ্চিত করুন" oninput="checkForm()">
+                <i class="fa-solid fa-eye-slash" id="eye-2" style="cursor: pointer; color: #888;" onclick="togglePwd('confirm-pwd', 'eye-2')"></i>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="submit-btn" id="submit-btn">জমা দিন</button>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let selectedType = "Nagad";
+
+        // Wallet Selection Handler
+        function selectWallet(typeKey, typeName, placeholderText, numTypeText) {
+            // Update active class on cards
+            const cards = document.querySelectorAll('.group-card');
+            cards.forEach(c => c.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Update Badge & Placeholder dynamically based on payment method
+            selectedType = typeName;
+            document.getElementById('wallet-badge').innerText = typeName;
+            document.getElementById('account-info').placeholder = `অনুগ্রহ করে ${typeName} ${numTypeText} পূরণ করুন`;
+            
+            checkForm();
+        }
+
+        // Password Show/Hide Toggle
+        function togglePwd(fieldId, iconId) {
+            const field = document.getElementById(fieldId);
+            const icon = document.getElementById(iconId);
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+
+        // Form Validation to activate submit button
+        function checkForm() {
+            const name = document.getElementById('fullname').value.trim();
+            const account = document.getElementById('account-info').value.trim();
+            const pwd = document.getElementById('txn-pwd').value.trim();
+            const confirmPwd = document.getElementById('confirm-pwd').value.trim();
+            const btn = document.getElementById('submit-btn');
+
+            if (name !== "" && account !== "" && pwd !== "" && confirmPwd !== "" && pwd === confirmPwd) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
