@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Master Copy</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000; /* ব্যাকগ্রাউন্ড কালো রাখা হয়েছে বোঝার সুবিধার্থে */
+        }
+
+        /* সাইডবার কন্টেইনার */
+        .sidebar {
+            width: 320px;
+            height: 100vh;
+            background-color: #1a2662; /* BDOK এর মত গাঢ় নীল রং */
+            color: white;
+            overflow-y: auto;
+            padding-bottom: 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* স্পোর্টস ও গেম গ্রিড (২x২) */
+        .game-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 20px 15px 15px 15px;
+        }
+
+        .game-item {
+            background-color: #273775;
+            padding: 15px 10px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .game-item:hover { background-color: #354794; }
+        .game-item i { font-size: 24px; margin-bottom: 8px; color: #a5b4fc; }
+        .game-item span { display: block; font-size: 14px; font-weight: bold; }
+
+        /* বাজি রেকর্ড বাটন */
+        .bet-record {
+            margin: 0 15px 15px 15px;
+            background-color: #273775;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .bet-record i { margin-right: 10px; color: #fff; }
+
+        /* রিবেট ও পুরস্কার গ্রিড */
+        .reward-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 0 15px 15px 15px;
+        }
+
+        .reward-item {
+            padding: 25px 10px 10px 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* গ্রেডিয়েন্ট কালারগুলো ছবির মত করে দেওয়া হয়েছে */
+        .bg-rebate { background: linear-gradient(135deg, #d32f2f, #ff5252); }
+        .bg-reward { background: linear-gradient(135deg, #7b1fa2, #e040fb); }
+        .bg-vip { background: linear-gradient(135deg, #c2185b, #ff4081); }
+
+        /* বন্ধুদের আমন্ত্রণ বাটন */
+        .invite-btn {
+            margin: 0 15px 15px 15px;
+            background: linear-gradient(90deg, #0277bd, #00bcd4);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .invite-btn i { font-size: 24px; color: #ffcc00; }
+
+        /* নিচের লিস্ট মেনু */
+        .bottom-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+
+        .bottom-list li {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .bottom-list li:hover { background-color: #273775; }
+        .bottom-list li i.icon-left { width: 30px; font-size: 18px; color: #ffcc00; text-align: center; margin-right: 15px; }
+        
+        .bottom-list li .right-arrow { margin-left: auto; color: #fff; }
+        .server-ping { font-size: 10px; color: #ff5252; position: absolute; left: 20px; margin-top: 25px; font-weight: bold; }
+        
+        .flag-icon { width: 20px; height: 15px; border-radius: 2px; margin-right: 15px; margin-left: 5px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- সাইডবার শুরু -->
+    <div class="sidebar">
+        
+        <!-- টপ গ্রিড (স্পোর্টস, লটারি ইত্যাদি) -->
+        <div class="game-grid">
+            <div class="game-item">
+                <i class="fas fa-futbol"></i>
+                <span>স্পোর্টস</span>
+            </div>
+            <div class="game-item">
+                <i class="fas fa-gamepad"></i>
+                <span>ই-স্পোর্টস</span>
+            </div>
+            <div class="game-item">
+                <i class="fas fa-spade"></i>
+                <span>পোকার</span>
+            </div>
+            <div class="game-item">
+                <i class="fas fa-ticket-alt"></i>
+                <span>লটারি</span>
+            </div>
+        </div>
+
+        <!-- বাজি রেকর্ড -->
+        <div class="bet-record">
+            <i class="fas fa-history"></i> বাজি রেকর্ড
+        </div>
+
+        <!-- রিবেট ও পুরস্কার সেকশন -->
+        <div class="reward-grid">
+            <div class="reward-item bg-rebate">
+                রিবেট
+                <i class="fas fa-coins" style="position: absolute; right: -5px; bottom: -5px; font-size: 40px; opacity: 0.5; color: yellow;"></i>
+            </div>
+            <div class="reward-item bg-reward">
+                পুরস্কার
+                <i class="fas fa-gift" style="position: absolute; right: -5px; bottom: -5px; font-size: 40px; opacity: 0.5; color: white;"></i>
+            </div>
+            <div class="reward-item bg-vip">
+                VIP
+                <i class="fas fa-crown" style="position: absolute; right: 5px; bottom: 5px; font-size: 25px; color: #ffcc00;"></i>
+            </div>
+        </div>
+
+        <!-- বন্ধুদের আমন্ত্রণ করুন -->
+        <div class="invite-btn">
+            <span>বন্ধুদের আমন্ত্রণ<br>করুন</span>
+            <i class="fas fa-sign-language"></i>
+        </div>
+
+        <!-- প্রোমোশন বাটনটি আপনার কথামতো বাদ দেওয়া হয়েছে -->
+
+        <!-- নিচের লিস্ট মেনু -->
+        <ul class="bottom-list">
+            <li>
+                <i class="fas fa-wifi icon-left" style="color: #ff5252;"></i> 
+                <span class="server-ping">101ms</span>
+                সার্ভার 1 
+                <i class="fas fa-caret-down right-arrow"></i>
+            </li>
+            <li>
+                <!-- বাংলাদেশের পতাকার জন্য ইমোজি ব্যবহার করা হয়েছে -->
+                <span style="font-size: 20px; margin-right: 15px; margin-left: 5px;">🇧🇩</span> 
+                বাংলা 
+                <i class="fas fa-caret-down right-arrow"></i>
+            </li>
+            <li>
+                <i class="fas fa-download icon-left"></i> অ্যাপ ডাউনলোড
+            </li>
+            <li>
+                <i class="fas fa-headset icon-left"></i> গ্রাহক সেবা
+            </li>
+            <li>
+                <i class="fas fa-question-circle icon-left"></i> FAQ
+            </li>
+            <li>
+                <i class="fas fa-sign-out-alt icon-left"></i> লগ আউট
+            </li>
+        </ul>
+
+    </div>
+    <!-- সাইডবার শেষ -->
+
+</body>
+</html>
